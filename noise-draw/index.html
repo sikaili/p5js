@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Line Sikai LI 2018</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+    <script src="sketch.js" type="text/javascript"></script>
+    <script src="draws.js" type="text/javascript"></script>
+    <script src="draw.js" type="text/javascript"></script>
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top; position:fixed; overflow:hidden; z-index:1} </style>
+  </head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <style>
+    *{
+      font-family: Arial, Helvetica, sans-serif
+    }
+    .scale {
+      display:none;
+    }
+    .dropbtn {
+        box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.2);
+        background-color: rgba(150,150,150,10);
+        color: white;
+        padding: 0vh;
+        border: none;
+        cursor: pointer;
+        font-size: 3vw;
+        width:5vw;
+        height:5vw;
+        max-width:60px;
+        max-height:60px;
+        border-radius: 1vw;
+
+    }
+    .dropbtn:hover, .dropbtn:focus {
+        background-color:rgba(100,100,100,10);
+    }
+    #redd {
+      background-color:rgb(100,0,0);
+    }
+    #redd:hover {
+      background-color:rgb(50,0,0);
+    }
+    .dropdown {
+        display: inline-block;
+        text-align: center;
+        left:3vw;
+        top:3vw;
+        position: absolute;
+        z-index:2;
+        /* width:100px;
+        height:50px;
+        border-radius: 2px; */
+        box-sizing: border-box;
+
+    }
+    .dropdown-content {
+        width:20vw;
+        opacity: 20;
+        /* height:50px; */
+        text-align: left;
+        font-size:2vh;
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        left:-1vw;
+        min-width: 200px;
+        top:8vh;
+        overflow: auto;
+        box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 20px;
+
+    }
+    .play button{
+      box-align: center;
+      box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.2);
+      background-color: rgba(150,150,150,10);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        right:3vw;
+        bottom: 3vw;
+        position: absolute;
+        z-index:2;
+        font-size: 3vw;
+        width:5vw;
+        height:5vw;
+        max-width:60px;
+        max-height:60px;
+        border-radius: 1vw;
+
+    }
+    .dropdown-content a {
+        color: grey;
+        padding: 1vh 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown a:hover {background-color: #ddd;}
+    
+    .show {display: inline-block;}
+
+    </style>
+    </head>
+    <body>
+    
+    <!-- <h2>Aligned Dropdown Content</h2> -->
+    <!-- <p>Use <strong>float: right</strong> on the dropdown class to float the dropdown menu to the right, and <strong>right:0</strong> on the dropdown-content if you want the dropdown content to go from right to left.</p> -->
+    <div class="play">
+      <button id = "+" onclick = "newSousdrawing()"> + </button>
+    </div>
+    <div class="dropdown">
+    <button id = "M"onclick="myFunction()" class="dropbtn">/\=</button>
+    <button id = "++"onclick="Scale(draws,1)" class="dropbtn scale">+</button>
+    <button id = "-"onclick="Scale(draws,-1)" class="dropbtn scale">-</button>
+      <div id="myDropdown" class="dropdown-content">
+        <a onclick="resetCanvas()">Clear Canvas</a>
+        <a onclick="Prompt()">View Drawings</a>
+        <a onclick="removeSnapshot(rrr)">Delete This Drawing</a>
+        <a href="http://skyl.fr">Go to skyl.fr</a>
+        <a id = "redd" onclick="resetAllSnapshots()">Clear Storage</a>
+      </div>
+    </div>
+    <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        document.getElementById("++").classList.toggle("show");
+        document.getElementById("-").classList.toggle("show");
+        state=0;
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    // window.ontouchstart = function(event) {
+    //   if (!event.target.matches('.dropbtn')) {
+    //     var dropdowns = document.getElementsByClassName("dropdown-content");
+    //     var i;
+    //     for (i = 0; i < dropdowns.length; i++) {
+    //       var openDropdown = dropdowns[i];
+    //       if (openDropdown.classList.contains('show')) {
+    //         openDropdown.classList.remove('show');
+    //       }
+    //     }
+    //   }
+    // }
+
+    
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show1')) {
+            openDropdown.classList.remove('show1');
+          }
+        }
+      }
+    }
+
+
+    
+    // window.ontouchend = function(event) {
+    //   if (!event.target.matches('.dropbtn')) {
+    //     let dropdowns = document.getElementsByClassName("dropdown-content");
+    //     for (let i = 0; i < dropdowns.length; i++) {
+    //       var openDropdown = dropdowns[i];
+    //       if (openDropdown.classList.contains('show')) {
+    //         openDropdown.classList.remove('show');
+    //       }
+    //     }
+    //   }
+    // }
+    </script>
+    
+    
+
+  <body>
+  </body>
+</html>

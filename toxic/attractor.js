@@ -56,7 +56,7 @@ function Attractor(x, y, m) {
       }
       else{
         if(this.del==true){
-          fill(random(0,255),random(127,255));
+          fill(100,random(20));
         }
         else{
           fill(0,180,35,25)

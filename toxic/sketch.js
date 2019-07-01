@@ -53,13 +53,13 @@ function setup() {
   // osc2.freq(240);
   // osc2.amp(0);
   // osc2.start();
-  Change = createP("Draw");
-  Change.position(windowWidth / 30, windowHeight / 30);
-  Change.touchStarted(changeMode);
-  Change.style("color:#685588;font-family:HelveticaNeue-light,Helvetica;font-size:35px;")
+  // Change = createP("Draw");
+  // Change.position(windowWidth / 30, windowHeight / 30);
+  // Change.touchStarted(changeMode);
+  // Change.style("color:#685588;font-family:HelveticaNeue-light,Helvetica;font-size:35px;")
 
   createCanvas(windowWidth, windowHeight)
-  atrs[0] = new Attractor(windowWidth+100, windowHeight, random(20, 20));
+  atrs[0] = new Attractor(windowWidth/2, windowHeight/2, random(50, 200));
   // atrs[1] = new Attractor(random(windowWidth),random(windowHeight), random(20,40));
   // atrs[2] = new Attractor(random(windowWidth),random(windowHeight), random(20,150));
   // atrs[3] = new Attractor(random(windowWidth/2),random(windowHeight/2), random(30,35));
@@ -67,8 +67,8 @@ function setup() {
 
 
 
-  for (var i = 0; i < 8; i++) {
-    particles[i] = new Particle(random(0, width), random(0, height), random(0.3, 2), 40, int(random(1, 3)))
+  for (var i = 0; i < 100; i++) {
+    particles[i] = new Particle(random(0, width), random(0, height), random(0.3, 2), 40, int(random(1, 5)))
   }
 
   textSize(15)
@@ -79,13 +79,13 @@ function setup() {
   delay.process(osc, 0.99, 0.3, 400)
   osc.connect(filter1)
   osc1.connect(filter1);
-  background(49,12,124);
-  link = createA("http://skyl.fr","http://skyl.fr");
-  link.style("color:#FF69B4;font-family:HelveticaNeue-light,Helvetica;font-size:30px;");
-  link1 = createP("LI Sikai 2018","2018");
-  link1.style("color:#FF69B4;font-family:Helvetica;font-size:25px;");
-  link1.position(0.9 * windowWidth - 90, 0.9 * windowHeight+22);
-  link.position(0.9 * windowWidth - 90, 0.9 * windowHeight);
+  background(0);
+  // link = createA("http://skyl.fr","http://skyl.fr");
+  // link.style("color:#FF69B4;font-family:HelveticaNeue-light,Helvetica;font-size:30px;");
+  // link1 = createP("LI Sikai 2018","2018");
+  // link1.style("color:#FF69B4;font-family:Helvetica;font-size:25px;");
+  // link1.position(0.9 * windowWidth - 90, 0.9 * windowHeight+22);
+  // link.position(0.9 * windowWidth - 90, 0.9 * windowHeight);
 
 
 }
@@ -93,8 +93,8 @@ function setup() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight)
   background(49,12,124);
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight + 17)
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
+//   link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight + 17)
+//   link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
 }
 
 function changeMode() {
@@ -104,8 +104,8 @@ function changeMode() {
     bac = color(120, 50);
     Change.html("Draw")
   } else {
-    background(49,12,124)
-    bac = color(random(0,255),random(0,50),random(0,200), 0);
+    background(0,30)
+    // bac = color(random(0,255),random(0,50),random(0,200), 0);
     Change.html("Wipe")
   }
 }
@@ -193,6 +193,8 @@ function touchEnded() {
 }
 
 function draw() {
+  
+
   if (countt % 2 == 0 && atrs.length > 0) {
     push()
     textAlign(CENTER)

@@ -58,6 +58,8 @@ function Particle(x, y, m, r, style) {
           osc.amp(env)
           osc.freq(this.freq1 * (1.414^floor(random(1))));
           env.play();
+          background(0,20);
+
         }, 0);
 
       }

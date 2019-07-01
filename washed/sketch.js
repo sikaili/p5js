@@ -11,7 +11,7 @@ var xoff = 0;
 var yoff = 0;
 
 function setup() {
-  // pixelDensity(5.0)
+  pixelDensity(1.0)
   noCursor();
 	// mic = new p5.AudioIn();
 	// mic.start();
@@ -29,16 +29,15 @@ function setup() {
 
 
 function draw() {
-  // background(100)
+  Math.random()>0.9?background(0):"";
   stroke(sin(xoff)*255,sin(yoff)*255,sin(yoff+yoff)*255);
   // fill(0,1);
   strokeWeight(noise(xoff,yoff)*2);
   rectMode(CENTER);
   for(let i =0; i < rects.length; i++){
-    fill(noise(i,xoff+yoff)*255-i*10,noise(yoff,i)*255-i*10,noise(xoff,yoff)*255,80);
-    stroke(sin(xoff,i)*255,sin(yoff)*255,sin(yoff+yoff)*255);
-
-    rects[i].update().xyoff(-0.001,-0.001);
+    fill(noise(i,xoff+yoff)*500-i*10,noise(yoff,i)*180-i*10,noise(xoff,yoff)*50,80);
+    stroke(noise(xoff,i)*100,noise(yoff,xoff)*100,noise(yoff+yoff)*100);
+    rects[i].update().xyoff(random(-0.01,0.01),-0.001);
     rects[i].display();
   }
 
@@ -47,7 +46,7 @@ function draw() {
 function RandomShape(_x,_y,_size){
   this.x = _x;
   this.y = _y;
-  this.size = _size+random(5,10);
+  this.size = _size+random(7,10);
 }
 function RandomCir(_x,_y,_size,_color){
   RandomShape.call(this,_x,_y,_size);
@@ -70,7 +69,10 @@ RandomCir.prototype.update = function(){
 
 RandomCir.prototype.display = function(){
   push();
+  (Math.random()>0.8&&this.size<8)?fill(0):"";
+
   translate(this.x,this.y);
+  // fill(0)
   beginShape();
   for(let s = 1; s< 10; s+=2){
     for(let theta = 0; theta < 2*PI; theta += 0.05){
@@ -79,7 +81,6 @@ RandomCir.prototype.display = function(){
       let y = r * cos(theta);
       let offset = noise(theta+this.size,xoff)*300;
       let offsety = noise(yoff,theta)*300;
-
       vertex(x+offset,y+offsety);
       
     }

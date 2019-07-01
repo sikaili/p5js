@@ -47,12 +47,12 @@ function setup() {
   for (var i = 0; i < 50; i++) {
     particles[i] = new Particle(random(width), random(height), random(1, 3), 20);
   }
-  link = createA("http://skyl.fr","http://skyl.fr");
-  link.style("color:#888884;font-family:HelveticaNeue-light,Helvetica;font-size:20px;")
-  link1 = createP("skyl@me.com","skyl@me.com");
-  link1.style("color:#888884;font-family:Helvetica;font-size:17px;")
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
+  // link = createA("http://skyl.fr","http://skyl.fr");
+  // link.style("color:#888884;font-family:HelveticaNeue-light,Helvetica;font-size:20px;")
+  // link1 = createP("skyl@me.com","skyl@me.com");
+  // link1.style("color:#888884;font-family:Helvetica;font-size:17px;")
+  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
+  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
   frameRate(30);
 
   name = "SL"
@@ -245,8 +245,8 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   mouseX = 0.65 * windowWidth;
   mouseY = 0.35 * windowHeight;
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
+  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
+  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
 }
 function touchEnded() {
   background(0);
@@ -261,7 +261,7 @@ function touchEnded() {
   if (ts.length > 2) {
     ts.splice(0, 1);
   }
-  if (ts[1] - ts[0] < 12) {
+  if (ts[1] - ts[0] < 12&&abs(mouseX-pmouseX)<50) {
     doubleClick = 1;
   } else {
     doubleClick = 0;
@@ -269,7 +269,8 @@ function touchEnded() {
   if (doubleClick == 1&& loading == false) {
 
     if (song.isPlaying()) {
-      // song.pause();
+      state1=-1;
+      song.pause();
       count1++;
     } else {
       song.play();

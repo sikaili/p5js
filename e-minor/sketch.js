@@ -50,12 +50,12 @@ function setup() {
     particles[i] = new Particle(random(width), random(height), random(1, 3), 20, 1);
   }
   loadSound("assets/e.m4a",songLoad);
-  link = createA("http://skyl.fr","http://skyl.fr");
-  link.style("color:#888884;font-family:HelveticaNeue-light,Helvetica;font-size:20px;")
-  link1 = createA("skyl@me.com","skyl@me.com");
-  link1.style("color:#888884;font-family:Helvetica;font-size:20px;")
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+30)
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
+  // link = createA("http://skyl.fr","http://skyl.fr");
+  // link.style("color:#888884;font-family:HelveticaNeue-light,Helvetica;font-size:20px;")
+  // link1 = createA("skyl@me.com","skyl@me.com");
+  // link1.style("color:#888884;font-family:Helvetica;font-size:20px;")
+  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+30)
+  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
 
 }
 function draw() {
@@ -244,8 +244,8 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   mouseX = 0.65 * windowWidth;
   mouseY = 0.35 * windowHeight;
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+30);
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight);
+  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+30);
+  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight);
 }
 function touchEnded() {
   background(0);
@@ -268,8 +268,8 @@ function touchEnded() {
   if (doubleClick == 1&& loading == false) {
 
     if (song.isPlaying()) {
-      // song.pause();
-      // state1 = -1;
+      song.pause();
+      state1 = -1;
     } else {
       song.play();
       state1 = 0;

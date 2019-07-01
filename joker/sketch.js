@@ -50,12 +50,12 @@ function setup(){
   for (var i = 0; i < 50; i++) {
     particles[i] = new Particle(random(width), random(height), random(1, 3), 20);
   }
-  link = createA("http://skyl.fr","http://skyl.fr");
-  link.style("color:#888884;font-family:HelveticaNeue-light,Helvetica;font-size:20px;")
-  link1 = createP("skyl@me.com","skyl@me.com");
-  link1.style("color:#888884;font-family:Helvetica;font-size:17px;")
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
+  // link = createA("http://skyl.fr","http://skyl.fr");
+  // link.style("color:#888884;font-family:HelveticaNeue-light,Helvetica;font-size:20px;")
+  // link1 = createP("skyl@me.com","skyl@me.com");
+  // link1.style("color:#888884;font-family:Helvetica;font-size:17px;")
+  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
+  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
   frameRate(30);
 
   name = "SL"
@@ -215,7 +215,6 @@ function draw() {
   //   }
   //   pop();
   // }
-  pop();
   angle += speed;
   // if(mouseIsPressed){
   //   song.jump(59,59);
@@ -280,8 +279,8 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   mouseX = 0.65 * windowWidth;
   mouseY = 0.35 * windowHeight;
-  link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
-  link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
+  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+17)
+  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight)
 }
 function touchEnded() {
   background(0);

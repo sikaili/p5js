@@ -83,7 +83,7 @@ function Particle(x, y, m, r) {
         }
         strokeWeight(constrain(this.mass * 1.5, 1.5, 4));
         if (state == 1) {
-          if (Math.random() > 0.2 && distance > 400) {
+          if (Math.random() > 0.9 && distance > 400) {
             line(particles[j].pos.x, particles[j].pos.y, this.pos.x, this.pos.y);
           }
         } else {
@@ -94,7 +94,7 @@ function Particle(x, y, m, r) {
         if (Math.random() > 0.94) {
           strokeWeight(0.5);
           stroke(50, random(500), random(500));
-          bezier(this.pos.x, this.pos.y, width / 2, height / 2, mouseX, mouseY, particles[j].pos.x, particles[j].pos.y);
+          // bezier(this.pos.x, this.pos.y, width / 2, height / 2, mouseX, mouseY, particles[j].pos.x, particles[j].pos.y);
         }
 
       }
@@ -172,7 +172,10 @@ function Particle(x, y, m, r) {
 
     // line(0, (this.r + m / 2) * 0.4, 0, (-this.r - m / 2) * 0.4)
     for (var i = 0; i < this.his.length; i++) {
-      point(this.his[i].x, this.his[i].y)
+      // point(this.his[i].x, this.his[i].y);
+      noStroke();
+      fill(0,20);
+      // text('。',0,0)
     }
     pop();
   }

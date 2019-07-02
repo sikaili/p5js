@@ -158,6 +158,9 @@ function draw() {
     // particles[i].steering(createVector(width-100,100),1,-1);
     // particles[i].steering(createVector(100,height-100),1,-1);
     // particles[i].steering(createVector(width-100,height-100),1,-1);
+    if (peakDetect.isDetected) {
+      particles[i].n = Math.floor(Math.random()*particles[i].arr.length);
+    }
     particles[i].bord();
     particles[i].fluide();
     particles[i].update();
@@ -272,7 +275,7 @@ function addParticles(_da) {
         particles.push(newParticle);
       }
       count1 += 1;
-      if (count1 > 24) {
+      if (count1 > 15) {
         particles.splice(0, particles.length - 1);
         for (var n = 0; n < 5; n++) {
           addParticles(2);

@@ -261,7 +261,7 @@ function touchEnded() {
   if (ts.length > 2) {
     ts.splice(0, 1);
   }
-  if (ts[1] - ts[0] < 12&&abs(mouseX-pmouseX)<50) {
+  if (ts[1] - ts[0] < 17&&abs(mouseX-pmouseX)<100) {
     doubleClick = 1;
   } else {
     doubleClick = 0;

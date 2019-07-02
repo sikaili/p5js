@@ -77,19 +77,19 @@ function draw() {
   // sum for letter amplitude, sum1 for vibration
   var sum = 0;
   var sum1 = 0;
-  for (var i = 700; i < 1000; i++) {
+  for (var i = 500; i < 700; i++) {
     sum += spectrum[i];
   }
   // sum = sum / 200 * 1.3;
-  sum = sum / 300 * 1.1;
+  sum = sum / 200 * 1.1;
   if (state == 1 || state == 2) {
     sum = 0
   }
 
-  for (var i = 0; i < 100; i++) {
+  for (var i = 200; i < 400; i++) {
     sum1 += spectrum[i];
   }
-  sum1 = sum1 / 500;
+  sum1 = sum1 / 200;
 
   // 
   fft.analyze();
@@ -120,7 +120,7 @@ function draw() {
     if (state == 0 && state1 === 0) {
       var back = constrain(map(sum, 50, 160, 0, 255), 20, 255)
       stroke(3 * back + 20 + sum + sum1 * random(20), 3 * back + 20 - sum, 3 * back + 20 - sum, 50 + back * 3)
-      background(50, 50,230 - constrain(sum1, 0, 50), back);
+      background(50, 50,255 - constrain(sum1, 0, 50), back);
     } else {
       background(150, 50, 50, sum1);
       fill(0, map(sum, 85, 110, 0, 255));

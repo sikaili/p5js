@@ -250,8 +250,8 @@ function touchEnded() {
   if (doubleClick == 1 && loading == false) {
 
     if (song.isPlaying()) {
-      song.pause();
-      state=-1;
+      // song.pause();
+      // state=-1;
     } else {
       song.play();
       state1 = 0;

@@ -106,7 +106,6 @@ function draw() {
       }
       else{
         // fill(y*8-x*5+mouseX/width*50,0,mouseY/height*100,130);
-
         vertex(sin(frameCount/150)*10+x*scl+random(-10,5), y*scl, terrain[x][y]+noise(flying)*60+Math.random()*10-am*8000);
 
       }

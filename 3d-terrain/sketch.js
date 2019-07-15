@@ -82,8 +82,8 @@ function draw() {
   }
   strokeWeight(2);
   background(100,100,255,60);
-  stroke(50,50,255,50);
-  fill(50,50,255,255);
+  stroke(50,50,255,100);
+  fill(50,50,150,200);
   scale(1.0-am*2);
   //translate(width/2, height/2);
   rotateZ(map(mouseX,0,width,-0.1,0.1));
@@ -95,12 +95,11 @@ function draw() {
     for (let x = 0; x < cols; x++) {
       if((Mouse(0,width/2)>x-(50/map(y,0,rows+15,1,25)+1)&&Mouse(0,width/2)<x+50/map(y,0,rows+15,1,25)-1)){
         push();
-        fill(255,125);
+        fill(0,150);
         vertex(sin(frameCount/300)*10+x*scl+random(-30,30), y*scl, terrain[x][y]-(height-mouseY)/10-y/2+Math.random()*10);
         if(state==1&&Math.random()>0.8){
-          fill(0,0,255,100+mouseX/width*150);
+          fill(0,0,100,100+mouseX/width*150);
           // vertex(sin(frameCount/600)*10+x*scl+random(-3,3), (y)*scl, terrain[x][y]+noise(flying)*-100);
-
           vertex(x*scl, y*scl, terrain[x][y]-noise(flying)*50+random(-3,3));
         }
         pop();

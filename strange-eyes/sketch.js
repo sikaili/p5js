@@ -95,6 +95,10 @@ function windowResized(){
 
 }
 function touchStarted(){
+  if (getAudioContext().state !== "running") {
+    getAudioContext().resume();
+    masterVolume(0.3, 0.5)
+  };
   var tStart = frameCount;
   state = 1;
 }

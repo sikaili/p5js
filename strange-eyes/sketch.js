@@ -10,7 +10,6 @@ var osc,osc1,osc2,note,freq,reverb,delay,env,env1,filter1;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
   reverb = new p5.Reverb();
   env = new p5.Envelope(0.2, 0.08, 0, 0.1);
   env1 = new p5.Envelope(5,0.2,0.2,5)

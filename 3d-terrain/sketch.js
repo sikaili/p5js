@@ -24,12 +24,10 @@ function songLoad(song){
   }
 }
 function setup() {
-  pixelDensity(2);
+  pixelDensity(1.0);
   amplitude = new p5.Amplitude();
   loadSound('assets/'+'mur'+'.m4a',songLoad);
-
   loadSound('assets/'+'sugar'+'.m4a',songLoad);
-
   createCanvas(windowWidth, windowHeight, WEBGL);
   cols = w / scl;
   rows = h / scl+50;

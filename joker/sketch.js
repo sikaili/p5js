@@ -155,11 +155,12 @@ function draw() {
     if (particles[i].mass < 3) {
       particles[i].steering(n, (xS * 1.5 + sum * 1.3) / 50, nn);
     }
+    let e;
     if (touches.length > 0 || mouseIsPressed) {
       if (touches.length > 1) {
         e = createVector(touches[0].x, touches[0].y);
       } else {
-        let e = createVector(mouseX, mouseY);
+        e = createVector(mouseX, mouseY);
       }
       if (particles[i].mass > 3) {
         particles[i].applyForce(createVector(width / 50, height / 50));

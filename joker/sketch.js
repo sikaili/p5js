@@ -35,9 +35,6 @@ let bigs;
 function songLoad(sound) {
   song = sound;
   loading = false;
-  song.play();
-  state1 = 0;
-  state = 0;
 }
 
 function setup() {
@@ -313,17 +310,17 @@ function touchEnded() {
   } else {
     doubleClick = 0;
   }
-  if (doubleClick == 1 && loading == false) {
-    if (song.isPlaying()) {
-      // song.pause();
-      count1++;
-    } else {
-      song.play();
-      state1 = 0;
-      mouseX = 0.5 * width;
-      mouseY = 0.4 * height;
-    }
+  // if (doubleClick == 1 && loading == false) {
+  if (song.isPlaying()) {
+    // song.pause();
+    count1++;
+  } else {
+    song.play();
+    state1 = 0;
+    mouseX = 0.5 * width;
+    mouseY = 0.4 * height;
   }
+  // }
 }
 
 function addParticles(_da, _x, _y) {

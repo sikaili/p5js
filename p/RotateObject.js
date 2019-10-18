@@ -5,8 +5,7 @@ class RotateObject {
     this.y = y;
     [this.r, this.rCircle, this._r] = [r, r, r];
     this.mode = 'normal';
-    this.outSide = false;
-    this.notPlayable = true;
+    this.playble = false;
     this.rot = false;
   }
   bigger() {
@@ -16,10 +15,16 @@ class RotateObject {
   }
   update(x1, y1) {
     let distance = calcDistance(x1, y1, this.x, this.y);
-    distance < this._r * 5 ? '' : distance *= 2;
-    distance > this._r * 3 ? this.outSide = true : '';
-    this.r = noise(frameCount / 100, this.x / 100, this.y) * this._r / 2 * 2 + 30 - distance / 20;
+    if (distance < this._r * 4) {
+      this.mode = 'inside'
+    } else {
+      this.mode = 'outside'
+      distance *= 2.2
+    };
+    this.r = noise(frameCount / 100, this.x / 100, this.y) * this._r / 2 * 2 + 30 - distance / this._r * 2;
     this.rCircle = noise(sin(frameCount / 60), this.x / 100) * this._r * 1.5 + 10 - distance / 400;
+    this.r = noise(frameCount / 100, calcDistance(mouseX, mouseY, this.x, this.y) / 150 + frameCount / 40) * this._r / 2 * 2 + 30 - distance / 20;
+    this.rCircle = noise(sin(frameCount / 60), calcDistance(mouseX, mouseY, this.x, this.y) / 300 + frameCount / 100) * this._r * 1.5 + 10 - distance / 400;
   }
   create(x2, y2, group) {
     group.filter(obj => calcDistance(obj.x, obj.y, x2, y2) < 200);
@@ -29,23 +34,32 @@ class RotateObject {
     translate(this.x, this.y);
 
     push();
-    this.notPlayable || this.rot ? rotate(this.r) : '';
-    !this.notPlayable ? fill(0) : fill(255, 0, 0);
+    !this.playble || this.rot ? rotate(this.r) : '';
+    this.playble ? fill(0) : fill(255, 0, 0);
     let scal = 1;
-    if (!this.outSide) {
-      scal = 1.2;
-    }
+
     rect(0, 0, this.r * scal, this.r);
+    fill(0, 0, 200, 80);
+    beginShape();
+    switch (this.mode) {
+      case 'inside': {
+        vertex(0, -this.r / 2);
+        vertex(this.r / 2, this.r / 2);
+        vertex(-this.r / 2, this.r / 2);
+        break;
+      }
+    }
+    endShape(CLOSE);
     pop();
 
     push();
-    fill(this.outSide ? [0, 40, 49, 100] : 255);
+    fill([0, 40, 49, 100]);
     if (color) {
       fill(color);
       ellipse(0, 0, this.rCircle, this.rCircle);
-      this.notPlayable = false;
+      this.playble = true;
     }
-    if (!this.notPlayable) {
+    if (this.playble) {
       fill(0, this.id, this.id * 2);
       this.rCircle /= 2;
     }

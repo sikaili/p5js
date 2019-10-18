@@ -1,6 +1,6 @@
 let intervalX, intervalY;
 let RotateObjects = [];
-let luckyNo = 0;
+let luckyNo;
 let loading = true;
 let sound = [];
 let amplitude;
@@ -45,15 +45,20 @@ let count = 0;
 
 
 function draw() {
+  if (keyIsPressed) {
+    let min = RotateObjects.filter(obj => calcDistance(obj.x, obj.y, mouseX, mouseY) < intervalX).sort()[0];
+    luckyNo = RotateObjects.indexOf(min);
+  }
   let level = amplitude.getLevel();
   background(150, 50 * (1 + level * 200), 200);
-
   for (let i = 0; i < RotateObjects.length; i++) {
     let obj = RotateObjects[i];
-
     obj.update(mouseX, mouseY);
+    if (obj.mode === 'inside') {
+      vertex(obj.x, obj.y);
+    }
     if (!loading) {
-      if (calcDistance(mouseX, mouseY, obj.x, obj.y) < 200 && !obj.notPlayable) {
+      if (calcDistance(mouseX, mouseY, obj.x, obj.y) < 200 && obj.playble) {
         obj.bigger();
         obj.rot = true;
         if (!sound[0].isPlaying()) {
@@ -74,6 +79,8 @@ function draw() {
 }
 
 function touchStarted() {
+  let min = RotateObjects.filter(obj => calcDistance(obj.x, obj.y, mouseX, mouseY) < intervalX).sort()[0];
+  luckyNo = RotateObjects.indexOf(min);
   getAudioContext().state == "running" ? '' : getAudioContext().resume();
 }
 

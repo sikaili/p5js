@@ -84,6 +84,10 @@ function touchStarted() {
   getAudioContext().state == "running" ? '' : getAudioContext().resume();
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+};
+
 function calcDistance(x, y, x1, y1) {
   return Math.sqrt((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
 }

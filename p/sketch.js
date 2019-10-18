@@ -78,7 +78,8 @@ function draw() {
   }
 }
 
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   let min = RotateObjects.filter(obj => calcDistance(obj.x, obj.y, mouseX, mouseY) < intervalX).sort()[0];
   luckyNo = RotateObjects.indexOf(min);
   getAudioContext().state == "running" ? '' : getAudioContext().resume();

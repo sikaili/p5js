@@ -132,7 +132,8 @@ function touchMoved() {
   state = 4;
 }
 
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   t1 = frameCount
     // if ((mouseX<width/10)&&(mouseY<height/10)){
     //   countt+=1;

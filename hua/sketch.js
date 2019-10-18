@@ -235,7 +235,8 @@ function draw() {
     speed = 0;
   }
 }
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   addParticles();
   background(255);
   speed = 0;

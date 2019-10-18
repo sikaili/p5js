@@ -10,6 +10,7 @@ let capture;
 
 function setup() {
   amplitude = new p5.Amplitude();
+  scale(1.5);
   for (let i = 0; i < 1; i++) {
     loadSound("assets/sound" + i + ".m4a", songLoad);
   }
@@ -27,8 +28,6 @@ function setup() {
   setInterval(() => {
     luckyNo = Math.floor(Math.random() * number);
   }, 1000)
-  // capture = createCapture(VIDEO);
-  // capture.size(320, 240);
 }
 
 let count = 0;
@@ -69,6 +68,12 @@ function draw() {
       obj.display();
     }
   }
+}
+function touchStarted() {
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
+}
+function calcDistance(x, y, x1, y1) {
+  return Math.sqrt((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
 }
 
 class RotateObject {
@@ -119,6 +124,3 @@ class RotateObject {
   }
 }
 
-function calcDistance(x, y, x1, y1) {
-  return Math.sqrt((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
-}

@@ -48,9 +48,10 @@ function draw() {
 
   for (let i = 0; i < RotateObjects.length; i++) {
     let obj = RotateObjects[i];
+    
     obj.update(mouseX, mouseY);
     if (!loading) {
-      if (calcDistance(mouseX, mouseY, obj.x, obj.y) < 200 && !obj.notPlayed) {
+      if (calcDistance(mouseX, mouseY, obj.x, obj.y) < 200 && !obj.notPlayable) {
         obj.bigger();
         obj.rot = true;
         if (!sound[0].isPlaying()) {
@@ -84,7 +85,7 @@ class RotateObject {
     this.r = r;
     this.r1 = r;
     this.outSide = false;
-    this.notPlayed = true;
+    this.notPlayable = true;
     this.rot = false;
   }
   bigger() {
@@ -98,29 +99,52 @@ class RotateObject {
     this.r1 = noise(sin(frameCount / 60), this.x / 100) * 60 + 10 - distance / 400;
   }
   display(color) {
-    push()
-    translate(this.x, this.y);
     push();
-    this.notPlayed || this.rot ? rotate(this.r) : '';
-    !this.notPlayed ? fill(0) : fill(255, 0, 0);
+    translate(this.x, this.y);
+
+    push();
+    this.notPlayable || this.rot ? rotate(this.r) : '';
+    !this.notPlayable ? fill(0) : fill(255, 0, 0);
     let scal = 1;
     if (!this.outSide) {
       scal = 1.2;
     }
     rect(0, 0, this.r * scal, this.r);
     pop();
+
+    push();
     fill(this.outSide ? [0, 40, 49, 100] : 255);
     if (color) {
       fill(color);
       ellipse(0, 0, this.r1, this.r1);
-      this.notPlayed = false;
+      this.notPlayable = false;
     }
-    if (!this.notPlayed) {
+    if (!this.notPlayable) {
       fill(0, this.id, this.id * 2);
       this.r1 /= 2;
     }
-    ellipse(0, 0, this.r1, this.r1)
+    ellipse(0, 0, this.r1, this.r1);
+    pop();
+
     pop()
   }
 }
 
+document.addEventListener(
+  "ontouchmove",
+  function(e) {
+    e.preventDefault();
+  },
+  {
+    passive: false
+  }
+);
+document.addEventListener(
+  "touchmove",
+  function(n) {
+    n.preventDefault();
+  },
+  {
+    passive: false
+  }
+);

@@ -240,7 +240,8 @@ function draw() {
   }
 
 }
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   Add();
   background(255);
   speed = 0;

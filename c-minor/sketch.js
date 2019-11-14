@@ -258,7 +258,8 @@ function draw() {
   // Eyes(50,0.002,5,4);
   // pop();
 }
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   addParticles();
   background(255);
   speed = 0;

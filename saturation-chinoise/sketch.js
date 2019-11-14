@@ -213,7 +213,8 @@ function draw() {
   }
 }
 
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   getAudioContext().state == "running" ? '' : getAudioContext().resume();
   addParticles();
   background(0);

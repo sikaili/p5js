@@ -277,7 +277,8 @@ function keyReleased() {
 
 }
 
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   addParticles();
   background(180, 20, 20);
   speed = 0;

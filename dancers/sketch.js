@@ -120,7 +120,7 @@ function draw() {
     if (state == 0 && state1 === 0) {
       var back = constrain(map(sum, 50, 160, 0, 255), 20, 255)
       stroke(3 * back + 20 + sum + sum1 * random(20), 3 * back + 20 - sum, 3 * back + 20 - sum, 50 + back * 3)
-      background(50, 50,255 - constrain(sum1, 0, 50), back);
+      background(50, 50, 255 - constrain(sum1, 0, 50), back);
     } else {
       background(150, 50, 50, sum1);
       fill(0, map(sum, 85, 110, 0, 255));
@@ -164,7 +164,7 @@ function draw() {
     particles[i].display(sum1 / 3, sum1, sum);
   }
   pop();
-  
+
   angle += speed;
   // if(mouseIsPressed){
   //   song.jump(59,59);
@@ -210,7 +210,8 @@ function draw() {
   }
 }
 
-function touchStarted() {
+function touchStarted() { 
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   getAudioContext().state == "running" ? '' : getAudioContext().resume();
   addParticles();
   background(0);
@@ -239,7 +240,7 @@ function touchEnded() {
   if (ts.length > 2) {
     ts.splice(0, 1);
   }
-  if (ts[1] - ts[0] < 15&&abs(mouseX-pmouseX)<40) {
+  if (ts[1] - ts[0] < 15 && abs(mouseX - pmouseX) < 40) {
     doubleClick = 1;
   } else {
     doubleClick = 0;

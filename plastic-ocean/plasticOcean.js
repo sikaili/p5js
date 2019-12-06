@@ -125,7 +125,6 @@ function record() {
 }
 
 var createLoop = function createLoop(x, y, _r) {
-  console.log(loops.length);
   _r > 100 ? background(random(100), 0, random(100), r / 2) : "";
   var num = Math.ceil(Math.random() * 10);
 

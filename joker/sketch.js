@@ -232,9 +232,9 @@ function draw() {
     fill(200, 100, 100, (sin(frameCount / 100 * 2 * PI) + 1) * 80);
     textSize(36);
     if (loading == false) {
-      text("Double Click to Play the song", 0.5 * width, windowHeight * 0.6);
+      text("Touch to play", 0.5 * width, windowHeight * 0.6);
     } else {
-      text("Loading the song...", 0.5 * windowWidth, windowHeight * 0.6);
+      text("Loading...", 0.5 * windowWidth, windowHeight * 0.6);
     }
     textSize(20);
     textSize(18);

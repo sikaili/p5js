@@ -209,9 +209,9 @@ function draw() {
     textSize(36);
     textAlign(CENTER);
     if (loading == false){
-      text("Double-Click to PLAY/STOP the song", 0.5 * width, windowHeight * 0.6);
+      text("Touch to play", 0.5 * width, windowHeight * 0.6);
     }else{
-      text("Loading the song...", 0.5 * windowWidth, windowHeight * 0.6);
+      text("Loading...", 0.5 * windowWidth, windowHeight * 0.6);
     }
     textSize(20);
     fill(150);
@@ -245,32 +245,16 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   mouseX = 0.65 * windowWidth;
   mouseY = 0.35 * windowHeight;
-  // link1.position(0.92 * windowWidth - 60, 0.9 * windowHeight+30);
-  // link.position(0.92 * windowWidth - 60, 0.9 * windowHeight);
 }
 function touchEnded() {
   background(0);
   speed = 0.04;
   state = 0;
-  var t = frameCount;
-  if (touches.length !== 0) {
-    ts = [];
-  } else {
-    ts.push(t);
-  }
-  if (ts.length > 2) {
-    ts.splice(0, 1);
-  }
-  if (ts[1] - ts[0] < 12) {
-    doubleClick = 1;
-  } else {
-    doubleClick = 0;
-  }
-  if (doubleClick == 1&& loading == false) {
+  if (loading == false) {
 
     if (song.isPlaying()) {
-      song.pause();
-      state1 = -1;
+      // song.pause();
+      // state1 = -1;
     } else {
       song.play();
       state1 = 0;

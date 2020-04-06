@@ -203,9 +203,9 @@ function draw() {
     fill(200,100,100, (sin(frameCount / 100 * 2 * PI) + 1) * 80);
     textSize(36);
     if (loading == false){
-      text("Double-Click to PLAY/STOP the song", 0.5 * width, windowHeight * 0.6);
+      text("Touch to play", 0.5 * width, windowHeight * 0.6);
     }else{
-      text("Loading the song...", 0.5 * windowWidth, windowHeight * 0.6);
+      text("Loading...", 0.5 * windowWidth, windowHeight * 0.6);
     }
     textSize(20);
     textSize(18);
@@ -254,24 +254,24 @@ function touchEnded() {
   speed = 0.075;
   state = 0;
   var t = frameCount;
-  if (touches.length !== 0) {
-    ts = [];
-  } else {
-    ts.push(t);
-  }
-  if (ts.length > 2) {
-    ts.splice(0, 1);
-  }
-  if (ts[1] - ts[0] < 17&&abs(mouseX-pmouseX)<100) {
-    doubleClick = 1;
-  } else {
-    doubleClick = 0;
-  }
-  if (doubleClick == 1&& loading == false) {
+  // if (touches.length !== 0) {
+  //   ts = [];
+  // } else {
+  //   ts.push(t);
+  // }
+  // if (ts.length > 2) {
+  //   ts.splice(0, 1);
+  // }
+  // if (ts[1] - ts[0] < 17&&abs(mouseX-pmouseX)<100) {
+  //   doubleClick = 1;
+  // } else {
+  //   doubleClick = 0;
+  // }
+  if (loading == false) {
 
     if (song.isPlaying()) {
-      state1=-1;
-      song.pause();
+      // state1=-1;
+      // song.pause();
       count1++;
     } else {
       song.play();

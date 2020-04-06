@@ -290,7 +290,7 @@ function touchEnded() {
   } else {
     doubleClick = 0;
   }
-  if (doubleClick == 1&& loading == false) {
+  if (loading == false) {
 
     if (song.isPlaying()) {
       // song.pause();

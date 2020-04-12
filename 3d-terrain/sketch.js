@@ -126,6 +126,7 @@ function windowResized(){
   resizeCanvas(windowWidth,windowHeight);
 }
 function touchStarted(){
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   state=1;
 }
 function touchEnded(){

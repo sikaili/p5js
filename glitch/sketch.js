@@ -85,6 +85,7 @@ function draw() {
 
 
 function touchStarted(){
+  getAudioContext().state == "running" ? '' : getAudioContext().resume();
   state = 1;
 }
 function touchEnded(){
